@@ -17,7 +17,7 @@ float k=1.0;//1.7
 float r=2200;//1700
 //int c=0;
 
-void print()
+/*void print()
 {
 int i=0;
 	if(TFC_Ticker[0]>100 && LineScanImageReady==1)						
@@ -41,7 +41,7 @@ int i=0;
 		}																
 	}	
 }
-
+*/
 void Linecheck()
 { 
 	lw=0;
