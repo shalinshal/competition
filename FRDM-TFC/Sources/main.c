@@ -2,8 +2,8 @@
 #include "TFC\TFC.h"
 #include "Math.h"
 float comp[128],thr,mean=0,sd=0,sum=0,temp1=0,flag=0,pos=0,spos=0,Result[128];
-float p,ccen=85,cen=0;
-int lw=0,l=0;
+float p,ccen=75,cen=0;
+int lw=0,l=0,lly=0,j=0;
 float difference=0;
 float derivative=0,proportional=0,integral=0,integrald=0,rate=0,prevposition=0,control=0;
 
@@ -14,10 +14,10 @@ float ki=0;
 
 //sauvola parameters
 float k=1.0;//1.7
-float r=2200;//1700
+float r=1550;//1700
 //int c=0;
 
-/*void print()
+void print()
 {
 int i=0;
 	if(TFC_Ticker[0]>100 && LineScanImageReady==1)						
@@ -28,12 +28,12 @@ int i=0;
 		TERMINAL_PRINTF("L:");										
 		for(i=0;i<128;i++)							
 		{									
-			TERMINAL_PRINTF("%X,",LineScanImage0[i]);
+			TERMINAL_PRINTF("%X,",(int)thr);
 			//TERMINAL_PRINTF("\r\n",LineScanImage1[i]);
 		}
 		for(i=0;i<128;i++)
 		{
-			 TERMINAL_PRINTF("%X",(int)pos*10);
+			 TERMINAL_PRINTF("%X",LineScanImage0[i]);
 			if(i==127)
 				TERMINAL_PRINTF("\r\n",LineScanImage1[i]);
 			else
@@ -41,30 +41,36 @@ int i=0;
 		}																
 	}	
 }
-*/
+
+void Delaycamera(void)
+{
+  for(lly=0;lly<1000;lly++); 
+}
 void Linecheck()
 { 
+	int i=0,j=0;
+	for(j=0;j<2;j++)
+	{
 	lw=0;
 	mean=0;
-	int i=0,j=0;
 	for(i=0;i<128;i++)
 	{
 		Result[i]=LineScanImage0Buffer[1][i];
-		temp1=Result[i]/128;
-		mean+=temp1;		
+	if(i>9 && i<120)
+		mean+=Result[i]/110;
+		//mean+=temp1;		
 	}
 sum=0;
-	for(i=0;i<128;i++)
+	for(i=10;i<120;i++)
 	{
-		
 		temp1=mean-Result[i];
-		sum+=temp1*temp1/128;
-	
+		sum+=temp1*temp1/110;
 	}
 sd=sqrt(sum);
 thr=mean*(1+k*(sd/r-1));
+	Delaycamera();}
 
-	for (i=0;i<128;i++)
+	for (i=10;i<120;i++)
 	{
 		if(Result[i]<thr)
 		{
@@ -77,10 +83,10 @@ thr=mean*(1+k*(sd/r-1));
 		}
 	}
 //print();
-if(lw<25)
+if(lw<20)
 {
 	
-	for(i=0;i<128;i++)
+	for(i=10;i<120;i++)
 	{
 		if(comp[i]==1)
 		{
@@ -119,17 +125,27 @@ else
 }
 
 void pid()
-{
+{      //  pos=(pos/55)-1;  
 	 difference=ccen-pos;
+	 
 		//-------------------------PID Algorithm-----------------------------------
 		if(difference>5 || difference<-5)	
 		{
-
 			//-----------------Proportional------------------------
 			proportional = difference * kp;
 			//-------------------Integral--------------------------
+			
+			if (difference == 0 || (integral / ((int)integral)) != (prevposition / ((int)prevposition)))
+			{
+			integral = 0;
+			}
+			else
+			{
 			integral += difference;
 			integrald = integral * ki;
+			}
+			//integral += difference;
+			//integrald = integral * ki;
 			//------------------Derivative-------------------------
 			rate = -prevposition + difference;
 			derivative = rate * kd;
@@ -178,7 +194,7 @@ int main(void)
 		TFC_Task();
 		Linecheck();
 		pid();
-		print();
+	//	print();
 		if(TFC_PUSH_BUTTON_0_PRESSED)
 			start:
 			while(1)
@@ -201,32 +217,39 @@ int main(void)
 					Linecheck();
 					pid();
 									
-					if(difference<7 && difference>-7)
+					if(difference<2 && difference>-2)
 					{
 						l++;
-						if(l>9)
-						{
-						//TFC_SetServo(0,0);     
-						kp=0.08;
-						kd=0;
-						ki=0;
-						fwd(0.55);
-						l=0;
+						if(l>13)
+						{     
+						kp=0.1;
+						kd=0.02;
+						ki=0.01;
+						fwd(0.57);
+						//l=0;
+						}
+						else
+						{   
+							kp=0.34;
+							kd=0.1;
+							ki=0.01;
+							fwd(0.47);	
 						}
 					}
-					
 					else
-						{
-						//TFC_SetServo(0,spos);     
-						kp=0.27;
-						kd=0.05;
-						ki=0;
-						fwd(0.40);
+					{     
+						kp=0.34;
+						kd=0.1;
+						ki=0.01;
+						fwd(0.47);
 						l=0;
-						}
+					}
 						
 				}
 			}
+	}
+}
+
 /*		//TFC_Task must be called in your main loop.  This keeps certain processing happy (I.E. Serial port queue check)
 			TFC_Task();
 
@@ -349,6 +372,7 @@ int main(void)
 			}
 	}
 	
-	return 0;*/
+	return 0;
 	}
 }
+*/
