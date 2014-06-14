@@ -2,7 +2,7 @@
 #include "TFC\TFC.h"
 #include "Math.h"
 float comp[128],thr,mean=0,sd=0,sum=0,temp1=0,flag=0,pos=0,spos=0,Result[128];
-float p,ccen=75,cen=0;
+float p,ccen=60,cen=550;
 int lw=0,l=0,lly=0,j=0;
 float difference=0;
 float derivative=0,proportional=0,integral=0,integrald=0,rate=0,prevposition=0,control=0;
@@ -13,8 +13,8 @@ float kd=0.05;
 float ki=0;
 
 //sauvola parameters
-float k=1.0;//1.7
-float r=1550;//1700
+float k=0.64;//1.7
+float r=5000;//1700
 //int c=0;
 
 void print()
@@ -29,11 +29,11 @@ int i=0;
 		for(i=0;i<128;i++)							
 		{									
 			TERMINAL_PRINTF("%X,",(int)thr);
-			//TERMINAL_PRINTF("\r\n",LineScanImage1[i]);
+			TERMINAL_PRINTF("\r\n",LineScanImage1[i]);
 		}
 		for(i=0;i<128;i++)
 		{
-			 TERMINAL_PRINTF("%X",LineScanImage0[i]);
+		//	 TERMINAL_PRINTF("%X",(int)Result[i]);
 			if(i==127)
 				TERMINAL_PRINTF("\r\n",LineScanImage1[i]);
 			else
@@ -66,10 +66,10 @@ sum=0;
 		temp1=mean-Result[i];
 		sum+=temp1*temp1/110;
 	}
-sd=sqrt(sum);
-thr=mean*(1+k*(sd/r-1));
-	Delaycamera();}
-
+	sd=sqrt(sum);
+	thr=mean*(1+k*(sd/r-1));
+	Delaycamera();
+	}
 	for (i=10;i<120;i++)
 	{
 		if(Result[i]<thr)
@@ -83,7 +83,7 @@ thr=mean*(1+k*(sd/r-1));
 		}
 	}
 //print();
-if(lw<20)
+if(lw<13)
 {
 	
 	for(i=10;i<120;i++)
@@ -124,28 +124,18 @@ else
 				
 }
 
+
 void pid()
 {      //  pos=(pos/55)-1;  
 	 difference=ccen-pos;
-	 
 		//-------------------------PID Algorithm-----------------------------------
-		if(difference>5 || difference<-5)	
+		if(difference>3 || difference<-3)	
 		{
 			//-----------------Proportional------------------------
 			proportional = difference * kp;
 			//-------------------Integral--------------------------
-			
-			if (difference == 0 || (integral / ((int)integral)) != (prevposition / ((int)prevposition)))
-			{
-			integral = 0;
-			}
-			else
-			{
 			integral += difference;
 			integrald = integral * ki;
-			}
-			//integral += difference;
-			//integrald = integral * ki;
 			//------------------Derivative-------------------------
 			rate = -prevposition + difference;
 			derivative = rate * kd;
@@ -163,8 +153,12 @@ void pid()
 	     }
 	     
 	     prevposition=difference;
-	    spos=spos/35; 
-	 	
+	     
+	/*     if (spos>0)
+	    	 spos=spos/20; 
+	     else 
+	    	 spos=spos/13;
+	     
 	    if(spos>1)
 	 	{
 	 	 spos=1; //right	
@@ -172,14 +166,14 @@ void pid()
 	 	else if(spos<-1)
 	 	{
 	 	 spos=-1;	//left
-	 	}
-	 	TFC_SetServo(0,spos);     
+	 	}*/
+	    TPM1_C0V=spos;   
 }
 
 void fwd(float x)
 {
 TFC_HBRIDGE_ENABLE;	
-TFC_SetMotorPWM(-x,-x);
+TFC_SetMotorPWM(x,x);
 }
 
 int main(void)
@@ -193,10 +187,11 @@ int main(void)
 		
 		TFC_Task();
 		Linecheck();
+		print();
 		pid();
-	//	print();
+		
 		if(TFC_PUSH_BUTTON_0_PRESSED)
-			start:
+		{	start:
 			while(1)
 			{
 				if(TFC_PUSH_BUTTON_1_PRESSED)
@@ -217,7 +212,7 @@ int main(void)
 					Linecheck();
 					pid();
 									
-					if(difference<2 && difference>-2)
+					/*if(difference<4 && difference>-4)
 					{
 						l++;
 						if(l>13)
@@ -225,30 +220,56 @@ int main(void)
 						kp=0.1;
 						kd=0.02;
 						ki=0.01;
-						fwd(0.57);
+						fwd(0.7);
 						//l=0;
 						}
 						else
 						{   
-							kp=0.34;
-							kd=0.1;
+							kp=0.22;
+							kd=0.18;
 							ki=0.01;
-							fwd(0.47);	
+							fwd(0.65);	
 						}
 					}
 					else
-					{     
-						kp=0.34;
-						kd=0.1;
-						ki=0.01;
-						fwd(0.47);
-						l=0;
-					}
-						
+					{   */  
+					
+					
+					
+				//	 if (difference<6 && difference>-6)
+					//		     {
+						// Super fast for straight path
+							     	kp=1.55;
+							     	kd=3;
+							     	ki=0.00;
+							     	fwd(0.73);
+						/*	     }
+							     else
+							     {
+							     kp=2.1;
+							     kd=0.5;
+							     ki=0.00;
+							     fwd(0.4);	
+							     }
+						if(difference<3 && difference>-3)
+						{
+							fwd(0.5);
+							TFC_BAT_LED1_ON;
+						}
+						else
+						{
+							TFC_BAT_LED1_OFF;
+							fwd(0.45);
+						}*/
+						//	l=0;
+				//	}
+					pid();	
 				}
 			}
+		}
 	}
 }
+
 
 /*		//TFC_Task must be called in your main loop.  This keeps certain processing happy (I.E. Serial port queue check)
 			TFC_Task();

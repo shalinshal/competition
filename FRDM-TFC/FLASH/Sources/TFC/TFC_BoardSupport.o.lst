@@ -376,15 +376,15 @@
  300              		.file 3 "D:/projects/frdm_TFC_workspace/FRDM-TFC/Project_Headers/MKL25Z4.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 TFC_BoardSupport.c
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:18     .text.TFC_InitGPIO:00000000 $t
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:23     .text.TFC_InitGPIO:00000000 TFC_InitGPIO
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:147    .text.TFC_SetBatteryLED_Level:00000000 TFC_SetBatteryLED_Level
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:131    .text.TFC_InitGPIO:00000098 $d
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:142    .text.TFC_SetBatteryLED_Level:00000000 $t
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:243    .text.TFC_SetBatteryLED_Level:00000074 $d
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:248    .text.TFC_GetDIP_Switch:00000000 $t
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:253    .text.TFC_GetDIP_Switch:00000000 TFC_GetDIP_Switch
-C:\Users\Shalin\AppData\Local\Temp\ccIw3ITK.s:293    .text.TFC_GetDIP_Switch:00000028 $d
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:18     .text.TFC_InitGPIO:00000000 $t
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:23     .text.TFC_InitGPIO:00000000 TFC_InitGPIO
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:147    .text.TFC_SetBatteryLED_Level:00000000 TFC_SetBatteryLED_Level
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:131    .text.TFC_InitGPIO:00000098 $d
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:142    .text.TFC_SetBatteryLED_Level:00000000 $t
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:243    .text.TFC_SetBatteryLED_Level:00000074 $d
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:248    .text.TFC_GetDIP_Switch:00000000 $t
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:253    .text.TFC_GetDIP_Switch:00000000 TFC_GetDIP_Switch
+C:\Users\Shalin\AppData\Local\Temp\ccEAtVFr.s:293    .text.TFC_GetDIP_Switch:00000028 $d
                      .debug_frame:00000010 $d
 
 NO UNDEFINED SYMBOLS

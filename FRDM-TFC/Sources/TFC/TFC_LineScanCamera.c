@@ -7,9 +7,8 @@ volatile uint16_t  *LineScanImage0;
 volatile uint16_t  *LineScanImage1;
 volatile uint16_t  LineScanImage0Buffer[2][128];
 volatile uint16_t  LineScanImage1Buffer[2][128];
-volatile uint8_t  LineScanWorkingBuffer;
-
-volatile uint8_t LineScanImageReady = 0;
+volatile uint8_t   LineScanWorkingBuffer;
+volatile uint8_t   LineScanImageReady = 0;
 
 void TFC_InitLineScanCamera()
 {
