@@ -62,4 +62,5 @@ SUBDIRS := \
 Sources \
 Sources/TFC \
 Project_Settings/Startup_Code \
+.metadata/.plugins/org.eclipse.cdt.make.core \
 

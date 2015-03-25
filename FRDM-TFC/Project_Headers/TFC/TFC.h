@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include <math.h>
 #include "Derivative.h"
 #include "TFC\TFC_Config.h"
 #include "TFC\TFC_Types.h"
@@ -26,6 +27,11 @@
 #include "TFC\TFC_Queue.h"
 #include "TFC\TFC_UART.h"
 #include "TFC\TFC_Terminal.h"
+
+typedef enum {
+    false = 0,
+    true
+} bool;
 
 void TFC_Task();
 void TFC_Init();

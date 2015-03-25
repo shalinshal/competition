@@ -1,8 +1,9 @@
-Sources/TFC/TFC_BoardSupport.o: ../Sources/TFC/TFC_BoardSupport.c \
+Sources/structc.o: ../Sources/structc.c \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/lib_ewl.prefix \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/common.prefix \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/ewl_c_version.h \
- D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC.h \
+ D:/guarder\ workspace/FRDM-TFC/Project_Headers/derivative.h \
+ D:/guarder\ workspace/FRDM-TFC/Project_Headers/MKL25Z4.h \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/stdint.h \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/ansi_parms.h \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/ewlGlobals.h \
@@ -11,6 +12,7 @@ Sources/TFC/TFC_BoardSupport.o: ../Sources/TFC/TFC_BoardSupport.c \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/limits_api.h \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/ewl_lib_ext1.h \
+ D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC.h \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/stdio.h \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdio \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstddef \
@@ -40,7 +42,6 @@ Sources/TFC/TFC_BoardSupport.o: ../Sources/TFC/TFC_BoardSupport.c \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/arm/math.ARM.h \
  C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cerrno \
  D:/guarder\ workspace/FRDM-TFC/Project_Headers/Derivative.h \
- D:/guarder\ workspace/FRDM-TFC/Project_Headers/MKL25Z4.h \
  D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC_Config.h \
  D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC_Types.h \
  D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC_arm_cm0.h \
@@ -61,7 +62,9 @@ C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/common.prefix:
 
 C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/ewl_c_version.h:
 
-D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC.h:
+D:/guarder\ workspace/FRDM-TFC/Project_Headers/derivative.h:
+
+D:/guarder\ workspace/FRDM-TFC/Project_Headers/MKL25Z4.h:
 
 C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/stdint.h:
 
@@ -78,6 +81,8 @@ C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint:
 C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/limits_api.h:
 
 C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/ewl_lib_ext1.h:
+
+D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC.h:
 
 C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/stdio.h:
 
@@ -136,8 +141,6 @@ C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/arm/math.ARM.h
 C:/Freescale/CW\ MCU\ v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cerrno:
 
 D:/guarder\ workspace/FRDM-TFC/Project_Headers/Derivative.h:
-
-D:/guarder\ workspace/FRDM-TFC/Project_Headers/MKL25Z4.h:
 
 D:/guarder\ workspace/FRDM-TFC/Project_Headers/TFC\TFC_Config.h:
 

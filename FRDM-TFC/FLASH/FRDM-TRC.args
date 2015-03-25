@@ -1,3 +1,4 @@
+"./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o"
 "./Project_Settings/Startup_Code/kinetis_sysinit.o"
 "./Project_Settings/Startup_Code/__arm_start.o"
 "./Project_Settings/Startup_Code/__arm_end.o"
@@ -13,6 +14,7 @@
 "./Sources/TFC/TFC_ARM_SysTick.o"
 "./Sources/TFC/TFC_ADC.o"
 "./Sources/TFC/TFC.o"
+"./Sources/structc.o"
 "./Sources/sa_mtb.o"
 "./Sources/main.o"
 -mcpu=cortex-m0
@@ -21,7 +23,7 @@
 -g3
 -gdwarf-2
 -gstrict-dwarf
--T"D:/projects/frdm_TFC_workspace/FRDM-TFC/Project_Settings/Linker_Files/MKL25Z128_flash.ld"
+-T"D:/guarder workspace/FRDM-TFC/Project_Settings/Linker_Files/MKL25Z128_flash.ld"
 -Xlinker
 --gc-sections
 -L"C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv6-m"

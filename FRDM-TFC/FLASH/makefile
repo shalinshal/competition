@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-#Progress monitor hint: 17
+#Progress monitor hint: 19
 first : all
 -include ../makefile.init
 
@@ -17,6 +17,7 @@ RM := "$(GNU_Make_Install_DirEnv)/rm" -rf
 -include Sources/subdir.mk
 -include Sources/TFC/subdir.mk
 -include Project_Settings/Startup_Code/subdir.mk
+-include .metadata/.plugins/org.eclipse.cdt.make.core/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -59,7 +60,7 @@ all: warning-messages explicit-dependencies FRDM-TRC.elf secondary-outputs
 # Tool invocations
 FRDM-TRC.elf: $(OBJS) $(USER_OBJS) ../Project_Settings/Linker_Files/MKL25Z128_flash.ld
 	@echo 'Building target: $@'
-	@echo 'Executing target #18 $@'
+	@echo 'Executing target #20 $@'
 	@echo 'Invoking: ARM Ltd Windows GCC C Linker'
 	"$(ARMSourceryDirEnv)/arm-none-eabi-gcc"  $(USER_OBJS_QUOTED) $(LIBS_QUOTED) @"FRDM-TRC.args" -o"FRDM-TRC.elf"
 	@echo 'Finished building target: $@'
@@ -67,7 +68,7 @@ FRDM-TRC.elf: $(OBJS) $(USER_OBJS) ../Project_Settings/Linker_Files/MKL25Z128_fl
 
 # Other Targets
 clean:
-	-$(RM) $(S_DEPS_QUOTED) "./*/*/*.o" "./*/*.o"  $(S_UPPER_DEPS_QUOTED) $(ASM_DEPS_QUOTED) $(ASM_UPPER_DEPS_QUOTED) $(SX_DEPS_QUOTED) $(EXECUTABLES_QUOTED) "./*/*/*.d" "./*/*.d"  $(ProjDirPath)/FLASH/FRDM-TRC.elf
+	-$(RM) $(S_DEPS_QUOTED) "./*/*/*/*.o" "./*/*/*.o" "./*/*.o"  $(S_UPPER_DEPS_QUOTED) $(ASM_DEPS_QUOTED) $(ASM_UPPER_DEPS_QUOTED) $(SX_DEPS_QUOTED) $(EXECUTABLES_QUOTED) "./*/*/*/*.d" "./*/*/*.d" "./*/*.d"  $(ProjDirPath)/FLASH/FRDM-TRC.elf
 	-@echo ' '
 
 secondary-outputs:

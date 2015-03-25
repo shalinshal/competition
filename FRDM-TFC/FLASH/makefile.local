@@ -5,6 +5,6 @@
 ################################################################################
 
 export GNU_Make_Install_DirEnv=$(CWInstallLocationEnv)/gnu/bin
-export ProjDirPath=D:/projects/frdm_TFC_workspace/FRDM-TFC
+export ProjDirPath=D:/guarder workspace/FRDM-TFC
 export CWInstallLocationEnv=C:/Freescale/CW MCU v10.6
 export ARMSourceryDirEnv=$(CWInstallLocationEnv)/Cross_Tools/arm-none-eabi-gcc-4_7_3/bin
